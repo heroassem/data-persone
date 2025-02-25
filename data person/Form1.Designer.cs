@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.box1 = new System.Windows.Forms.TextBox();
+            this.box2 = new System.Windows.Forms.TextBox();
+            this.box3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,8 +54,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(146, 61);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -92,35 +94,39 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(146, 61);
             this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
+            this.button4.Text = "ShowAllData";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox1
+            // box1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Aquamarine;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(234, 104);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(514, 38);
-            this.textBox1.TabIndex = 4;
+            this.box1.BackColor = System.Drawing.Color.Aquamarine;
+            this.box1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.box1.Location = new System.Drawing.Point(234, 104);
+            this.box1.Name = "box1";
+            this.box1.Size = new System.Drawing.Size(514, 38);
+            this.box1.TabIndex = 4;
+            this.box1.Tag = "box";
             // 
-            // textBox2
+            // box2
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Aquamarine;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(234, 172);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(514, 38);
-            this.textBox2.TabIndex = 5;
+            this.box2.BackColor = System.Drawing.Color.Aquamarine;
+            this.box2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.box2.Location = new System.Drawing.Point(234, 172);
+            this.box2.Name = "box2";
+            this.box2.Size = new System.Drawing.Size(514, 38);
+            this.box2.TabIndex = 5;
+            this.box2.Tag = "box";
             // 
-            // textBox3
+            // box3
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Aquamarine;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(234, 235);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(514, 38);
-            this.textBox3.TabIndex = 6;
+            this.box3.BackColor = System.Drawing.Color.Aquamarine;
+            this.box3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.box3.Location = new System.Drawing.Point(234, 235);
+            this.box3.Name = "box3";
+            this.box3.Size = new System.Drawing.Size(514, 38);
+            this.box3.TabIndex = 6;
+            this.box3.Tag = "box";
             // 
             // label1
             // 
@@ -172,16 +178,17 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.box3);
+            this.Controls.Add(this.box2);
+            this.Controls.Add(this.box1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Aquamarine;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -197,9 +204,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox box1;
+        private System.Windows.Forms.TextBox box2;
+        private System.Windows.Forms.TextBox box3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
