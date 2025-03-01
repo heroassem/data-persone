@@ -34,8 +34,12 @@ namespace data_person
 
             for (int i = 0; i < data.Length-1; i++)
             {
-                list.Items.Add(data[i]);
+                if(data[i].Trim() != "")
+                {
+                    list.Items.Add(data[i]);
+                }
             }
+            sr.Close();
         }
     }
 }

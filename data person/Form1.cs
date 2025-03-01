@@ -17,10 +17,11 @@ namespace data_person
         public string folder = @"C:\Users\Admin\Desktop\data folder";
         public string file = "data.txt";
         public StreamWriter sw;
-        public string boxs;
+        public StreamReader sr;
         public string idPattern = @"^\d{3}$";
         public string namePattern = @"^[a-zA-Z]+$";
         public string passwordPattern = @"^[a-zA-Z0-9!@#$%^&*()_+=-]+$";
+        public string data;
 
         public Form1()
         {
@@ -39,6 +40,7 @@ namespace data_person
 
         private void button1_Click(object sender, EventArgs e)
         {
+            data = string.Format("{0}/{1}/{2}\n", box1.Text, box2.Text, box3.Text);
             Regex id = new Regex(idPattern);
             Regex name = new Regex(namePattern);
             Regex password = new Regex(passwordPattern);
@@ -61,11 +63,22 @@ namespace data_person
             }
             else
             {
-                sw = new StreamWriter(folder + @"\" + file, true);
-                sw.WriteLine("{0}/{1}/{2}\n", box1.Text, box2.Text, box3.Text);
-                sw.Close();
-                MessageBox.Show("Data saved");
-                box1.Clear(); box2.Clear(); box3.Clear();
+                sr = new StreamReader(folder + @"\" + file);
+                string line = sr.ReadToEnd();
+                sr.Close();
+
+                if(line.Contains(box1.Text))
+                {
+                    MessageBox.Show("ID already exists");
+                }
+                else
+                {
+                    sw = new StreamWriter(folder + @"\" + file, true);
+                    sw.Write(data);
+                    sw.Close();
+                    MessageBox.Show("Data saved");
+                    box1.Clear(); box2.Clear(); box3.Clear();
+                }
             }
         }
 
@@ -73,6 +86,32 @@ namespace data_person
         {
             dataForm df = new dataForm();
             df.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            sr = new StreamReader(folder + @"\" + file);
+            string line = sr.ReadToEnd();
+            string[] data = line.Split('\n');
+            sr.Close();
+
+            for (int i = 0; i < data.Length - 1; i++)
+            {
+                string[] person = data[i].Split('/');
+
+                if (person[0] == box1.Text)
+                {
+                    box1.Text = person[0];
+                    box2.Text = person[1];
+                    box3.Text = person[2];
+                    break;
+                }
+            }
         }
     }
 }
