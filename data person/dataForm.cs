@@ -28,6 +28,8 @@ namespace data_person
 
         private void dataForm_Load(object sender, EventArgs e)
         {
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             sr = new StreamReader(form1.folder + @"\" + form1.file);
             string line = sr.ReadToEnd();
             string[] data = line.Split('\n');

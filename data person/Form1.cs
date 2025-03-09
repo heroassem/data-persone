@@ -14,7 +14,7 @@ namespace data_person
 {
     public partial class Form1: Form
     {
-        public string folder = @"C:\Users\Admin\Desktop\data folder";
+        public string folder = @"data folder";
         public string file = "data.txt";
         public StreamWriter sw;
         public StreamReader sr;
@@ -67,7 +67,7 @@ namespace data_person
                 string line = sr.ReadToEnd();
                 sr.Close();
 
-                if(line.Contains(box1.Text))
+                if(line.Contains(box1.Text+"/"))
                 {
                     MessageBox.Show("ID already exists");
                 }
